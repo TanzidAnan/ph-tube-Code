@@ -1,4 +1,4 @@
-import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
 import { createContext, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import auth from '../../firebase.confige';
@@ -6,7 +6,7 @@ export const authContext = createContext()
 
 
 const MainLayouts = () => {
-    const [user,setUser] =useState(null)
+    const [user, setUser] = useState(null)
 
     const googleProdider = new GoogleAuthProvider()
     const githubProvider = new GithubAuthProvider();
@@ -32,15 +32,29 @@ const MainLayouts = () => {
             })
     }
 
-    useEffect(() =>{
-        console.log('user:', user)
-    },[user])
+    const hendleLogOut =() =>{
+        signOut(auth)
+        .then(res => console.log(res))
+    }
 
-    const authData ={
+    useEffect(() => {
+        onAuthStateChanged(auth, user => {
+            console.log(user)
+            if (user) {
+
+            }
+            else {
+
+            }
+        })
+    }, [])
+
+    const authData = {
         hendleGoogleLogin,
         hendleGitHub,
         user,
-        setUser
+        setUser,
+        hendleLogOut
     }
 
 

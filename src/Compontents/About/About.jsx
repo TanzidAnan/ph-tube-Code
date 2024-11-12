@@ -10,7 +10,7 @@ const About = () => {
             <h1>this is About</h1>
             <button onClick={hendleGoogleLogin} className="btn ">Google Login</button>
             {
-                user && <p>{user?.email}</p>
+                user && <p>{user?.displayName}</p>
             }
         </div>
     );
