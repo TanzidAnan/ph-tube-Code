@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { authContext } from "../MainLayouts/MainLayouts";
 
 const About = () => {
-    const {hendleGoogleLogin,user} =useContext(authContext);
-    console.log(user)
+    const {hendleGoogleLogin,user,hendleLogOut} =useContext(authContext);
+    console.log(user);
     
     return (
         <div>
@@ -12,6 +12,7 @@ const About = () => {
             {
                 user && <p>{user?.displayName}</p>
             }
+            <button onClick={hendleLogOut}>Log Out</button>
         </div>
     );
 };
