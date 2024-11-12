@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, GithubAuthProvider, GoogleAuthProvider,
 import { createContext, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import auth from '../../firebase.confige';
+import Navber from '../Navber/Navber';
 export const authContext = createContext()
 
 
@@ -90,6 +91,7 @@ const MainLayouts = () => {
     return (
         <div>
             <authContext.Provider value={authData}>
+                <Navber></Navber>
                 <Outlet></Outlet>
             </authContext.Provider>
         </div>

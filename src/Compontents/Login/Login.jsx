@@ -1,6 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { authContext } from '../MainLayouts/MainLayouts';
+import { NavLink } from 'react-router-dom';
 
 const Login = () => {
+    const {hendleSignIn} =useContext(authContext)
+
+    const hendleSubmit =e =>{
+        e.preventDefault();
+        const email =e.target.email.value
+        const password =e.target.password.value
+        hendleSignIn(email,password)
+    }
+
     return (
         <div>
             <form onSubmit={hendleSubmit}>
@@ -8,10 +19,9 @@ const Login = () => {
                 <br />
                 password<input type="password" name="password" id="" />
                 <br />
-                confer password<input type="password" name="conferpassword" id="" />
-                <br />
-                <button type="submit">submit</button>
+                <button className='btn' type="submit">Login</button>
             </form>
+            <NavLink to='/signIn'>Sing Up</NavLink>
         </div>
     );
 };

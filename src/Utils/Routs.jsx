@@ -3,6 +3,8 @@ import MainLayouts from "../Compontents/MainLayouts/MainLayouts";
 import Home from "../Compontents/Home/Home";
 import About from "../Compontents/About/About";
 import SignUp from "../Compontents/SignUp/SignUp";
+import Login from "../Compontents/Login/Login";
+import Profile from "../Compontents/Profile/Profile";
 
 const routes = createBrowserRouter([
     {
@@ -20,6 +22,14 @@ const routes = createBrowserRouter([
             {
                 path:'/signIn',
                 element:<SignUp></SignUp>
+            },
+            {
+                path:'/login',
+                element:<Login></Login>
+            },
+            {
+                path:'/porfile',
+                element:<Profile></Profile>
             }
         ]
     }
