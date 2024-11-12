@@ -2,29 +2,44 @@ import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebas
 import { createContext } from 'react';
 import { Outlet } from 'react-router-dom';
 import auth from '../../firebase.confige';
-export const authContext =createContext()
+export const authContext = createContext()
 
 
 const MainLayouts = () => {
-    
-    const googleProdider =new GoogleAuthProvider()
+
+    const googleProdider = new GoogleAuthProvider()
     const githubProvider = new GithubAuthProvider();
 
-    const hendleGoogleLogin =() =>{
-        signInWithPopup(auth,googleProdider)
-        .then(result =>{
-            console.log(result.user)
-        })
-        .catch(error =>{
-            console.log(error.message)
-        })
+    const hendleGoogleLogin = () => {
+        signInWithPopup(auth, googleProdider)
+            .then(result => {
+                console.log(result.user)
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
 
     }
-    
+
+    const hendleGitHub = () => {
+        signInWithPopup(auth, githubProvider)
+            .then(result => {
+                console.log(result.user)
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
+
+    const authData ={
+        
+    }
+
+
     return (
         <div>
             <h1>Tanzid anan</h1>
-            <authContext.Provider value={{name:'tanzid'}}>
+            <authContext.Provider value={{ name: 'tanzid' }}>
                 <Outlet></Outlet>
             </authContext.Provider>
         </div>
