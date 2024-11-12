@@ -37,16 +37,24 @@ const MainLayouts = () => {
         .then(res => console.log(res))
     }
 
-    useEffect(() => {
-        onAuthStateChanged(auth, user => {
-            console.log(user)
-            if (user) {
+    useEffect(() =>{
+        console.log('Users:',user)
+    },[user])
 
+    useEffect(() => {
+       const unSubserce= onAuthStateChanged(auth, currentUser => {
+            console.log(currentUser)
+            if (currentUser) {
+                setUser(createContext)
             }
             else {
 
             }
         })
+
+        return () =>{
+            unSubserce()
+        }
     }, [])
 
     const authData = {
