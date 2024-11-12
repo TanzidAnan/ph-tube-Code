@@ -1,4 +1,4 @@
-import { GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { createContext, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import auth from '../../firebase.confige';
@@ -20,6 +20,25 @@ const MainLayouts = () => {
                 console.log(error.message)
             })
 
+    }
+
+    const hendleSignUp =(email, password) =>{
+        createUserWithEmailAndPassword(auth, email, password)
+        .then(res =>{
+            console.log(res.user)
+        })
+        .catch(error =>{
+            console.log(error.message)
+        })
+    }
+    const hendleSignIn =(email, password) =>{
+        signInWithEmailAndPassword(auth, email, password)
+        .then(res =>{
+            console.log(res.user)
+        })
+        .catch(error =>{
+            console.log(error.message)
+        })
     }
 
     const hendleGitHub = () => {
@@ -62,7 +81,9 @@ const MainLayouts = () => {
         hendleGitHub,
         user,
         setUser,
-        hendleLogOut
+        hendleLogOut,
+        hendleSignUp,
+        hendleSignIn
     }
 
 
