@@ -2,7 +2,8 @@ import { useContext } from "react";
 import { authContext } from "../MainLayouts/MainLayouts";
 
 const About = () => {
-    const {hendleGoogleLogin} =useContext(authContext);
+    const {hendleGoogleLogin,user} =useContext(authContext);
+    console.log(user)
     
     return (
         <div>
