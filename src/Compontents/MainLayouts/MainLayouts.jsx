@@ -32,14 +32,14 @@ const MainLayouts = () => {
     }
 
     const authData ={
-        
+        hendleGoogleLogin,
+        hendleGitHub,
     }
 
 
     return (
         <div>
-            <h1>Tanzid anan</h1>
-            <authContext.Provider value={{ name: 'tanzid' }}>
+            <authContext.Provider value={authData}>
                 <Outlet></Outlet>
             </authContext.Provider>
         </div>

@@ -1,13 +1,11 @@
-
-import React from 'react';
-import auth from '../../firebase.confige';
-
+import { useContext } from "react";
+import { authContext } from "../MainLayouts/MainLayouts";
 
 const Home = () => {
 
-
-    
-
+    const { hendleGoogleLogin,
+        hendleGitHub
+    } = useContext(authContext);
 
     return (
         <div>
