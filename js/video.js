@@ -64,19 +64,25 @@ const displayVideos = (vidoes) => {
     const videoContainer = document.getElementById('videos')
     vidoes.forEach(video => {
         const card = document.createElement('div')
-        card.classList ='card card-compact'
+        card.classList = 'card card-compact shadow-sm bg-red-200'
         card.innerHTML = `
         <figure>
     <img
-    class="w-[300px] h-[40vh] rounded"
+    class="w-[100%] h-[25vh] rounded "
       src=${video.thumbnail}
       alt="Shoes" />
   </figure>
-  <div class="card-body">
-    <h2 class="card-title">Shoes!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-    <div class="card-actions justify-end">
-      <button class="btn btn-primary">Buy Now</button>
+  <div class="px-0 py-3 flex gap-2">
+    <div>
+    <img class="w-10 h-10 rounded-full object-cover" src=${video.authors[0].profile_picture}>
+    </div>
+    <div>
+    <h2 class="font-bold ">${video.title}</h2>
+    <div class='flex gap-3  items-center'>
+    <p class='text-gray-600 text-lg'>${video.authors[0].profile_name}</p>
+    <img class='w-5 h-5 object-cover' src="https://img.icons8.com/?size=80&id=41816&format=png"> 
+    </div>
+    
     </div>
   </div>
         `;
