@@ -17,11 +17,7 @@ fetch('https://openapi.programming-hero.com/api/phero-tube/categories')
 .catch((error) =>console.log(error))
 }
 
-const loadVideos=() =>{
-    fetch('https://openapi.programming-hero.com/api/phero-tube/videos')
-    .then(res =>res.json())
-    .then(data => console.log(data))
-}
+
 
 const displayCategories = (categories) => {
     const categoriesContainer =document.getElementById('categories')
@@ -35,6 +31,22 @@ const displayCategories = (categories) => {
     
 }
 
+
+const loadVideos=() =>{
+    fetch('https://openapi.programming-hero.com/api/phero-tube/videos')
+    .then(res =>res.json())
+    .then(data => displayVideos(data.videos))
+    .catch((error)=>console.log(error))
+}
+
+
+const displayVideos=(vidoes) =>{
+    console.log(vidoes)
+    const videoContainer =document.getElementById('videos')
+    vidoes.forEach(video =>{
+        console.log(video)
+    })
+}
 
 
 
