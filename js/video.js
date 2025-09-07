@@ -59,6 +59,45 @@ const object = {
 }
 
 
+// function getTimeString(time) {
+//     const days =parseInt(time/86400)
+//     const hour = parseInt(time / 3600);
+//     let remainingSecond = time % 3600;
+//     const minute = parseInt(remainingSecond / 60);
+//     remainingSecond = remainingSecond % 60;
+//     return `${days} days ${hour} hour ${minute} minute ${remainingSecond} second age`
+// }
+
+function getTimeString(time) {
+  const days = parseInt(time / 86400); 
+  const hours = parseInt((time % 86400) / 3600); 
+  const minutes = parseInt((time % 3600) / 60); 
+  const seconds = time % 60;
+  return `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+}
+
+// function getTimeString(time) {
+//   const months = parseInt(time / 2592000); // 1 month = 30 days
+//   const days = parseInt((time % 2592000) / 86400); // বাকি সেকেন্ড থেকে দিন
+//   const hours = parseInt((time % 86400) / 3600); // বাকি সেকেন্ড থেকে ঘন্টা
+//   const minutes = parseInt((time % 3600) / 60); // বাকি সেকেন্ড থেকে মিনিট
+//   const seconds = time % 60; // বাকি সেকেন্ড
+
+//   return `${months} months ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+// }
+
+
+// function getTimeString(time) {
+//   const years = parseInt(time / 31536000); // 1 year = 365 days
+//   const months = parseInt((time % 31536000) / 2592000); // মাস বের করা
+//   const days = parseInt((time % 2592000) / 86400); // বাকি দিন
+//   const hours = parseInt((time % 86400) / 3600); // বাকি ঘন্টা
+//   const minutes = parseInt((time % 3600) / 60); // বাকি মিনিট
+//   const seconds = time % 60; // বাকি সেকেন্ড
+
+//   return `${years} years ${months} months ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+// }
+
 const displayVideos = (vidoes) => {
     console.log(vidoes)
     const videoContainer = document.getElementById('videos')
@@ -66,11 +105,13 @@ const displayVideos = (vidoes) => {
         const card = document.createElement('div')
         card.classList = 'card card-compact shadow-sm bg-red-200'
         card.innerHTML = `
-        <figure>
+        <figure class='relative'>
     <img
     class="w-[100%] h-[25vh] rounded "
       src=${video.thumbnail}
       alt="Shoes" />
+      ${video.others.posted_date?.length === 0 ? '' : `<span class='absolute right-2 bottom-2 bg-black rounded-md text-white'>${getTimeString(video.others.posted_date)}</span>`}
+      
   </figure>
   <div class="px-0 py-3 flex gap-2">
     <div>
@@ -80,7 +121,8 @@ const displayVideos = (vidoes) => {
     <h2 class="font-bold ">${video.title}</h2>
     <div class='flex gap-3  items-center'>
     <p class='text-gray-600 text-lg'>${video.authors[0].profile_name}</p>
-    <img class='w-5 h-5 object-cover' src="https://img.icons8.com/?size=80&id=41816&format=png"> 
+    ${video.authors[0].verified === true ? `<img class='w-5 h-5 object-cover' src="https://img.icons8.com/?size=80&id=41816&format=png"> ` : ''}
+    
     </div>
     
     </div>
