@@ -123,6 +123,12 @@ function getTimeString(time) {
 //   return `${years} years ${months} months ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
 // }
 
+
+const loadDetails =(videoId) =>{
+    console.log(videoId)
+}
+
+
 const displayVideos = (vidoes) => {
     console.log(vidoes)
     const videoContainer = document.getElementById('videos')
@@ -165,7 +171,7 @@ const displayVideos = (vidoes) => {
     ${video.authors[0].verified === true ? `<img class='w-5 h-5 object-cover' src="https://img.icons8.com/?size=80&id=41816&format=png"> ` : ''}
     
     </div>
-    
+    <button onclick="loadDetails('${video.video_id}')" class='btn btn-sm border-t-cyan-300'>add</button>
     </div>
   </div>
         `;
