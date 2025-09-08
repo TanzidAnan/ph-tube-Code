@@ -18,15 +18,23 @@ const loadCategoride = () => {
 }
 
 
+const loadCategorideVideos=(id) =>{
+    alert(id)
+}
+
 
 const displayCategories = (categories) => {
     const categoriesContainer = document.getElementById('categories')
     categories.forEach((item) => {
         console.log(item)
-        const button = document.createElement('button');
-        button.classList = 'btn bg-red-400 text-white font-bold text-lg hover:bg-blue-300';
-        button.innerText = item.category;
-        categoriesContainer.append(button)
+        const buttonContainer = document.createElement('div');
+        buttonContainer.innerHTML =`
+        <button onclick="loadCategorideVideos(${item.category_id})" class='btn'>
+        ${item.category}
+        </button> 
+        `
+        
+        categoriesContainer.append(buttonContainer)
     })
 
 }
@@ -110,7 +118,7 @@ const displayVideos = (vidoes) => {
     class="w-[100%] h-[25vh] rounded "
       src=${video.thumbnail}
       alt="Shoes" />
-      ${video.others.posted_date?.length === 0 ? '' : `<span class='absolute right-2 bottom-2 bg-black rounded-md text-white'>${getTimeString(video.others.posted_date)}</span>`}
+      ${video.others.posted_date?.length === 0 ? '' : `<span class='absolute right-2 bottom-2 text-xs px-4 py-2 bg-black rounded-md text-white'>${getTimeString(video.others.posted_date)}</span>`}
       
   </figure>
   <div class="px-0 py-3 flex gap-2">
