@@ -19,7 +19,10 @@ const loadCategoride = () => {
 
 
 const loadCategorideVideos=(id) =>{
-    alert(id)
+     fetch(`https://openapi.programming-hero.com/api/phero-tube/category/${id}`)
+        .then(res => res.json())
+        .then(data => displayVideos(data.category))
+        .catch((error) => console.log(error))
 }
 
 
@@ -109,6 +112,22 @@ function getTimeString(time) {
 const displayVideos = (vidoes) => {
     console.log(vidoes)
     const videoContainer = document.getElementById('videos')
+    videoContainer.innerHTML =''
+
+    if(vidoes.length ===0){
+        videoContainer.classList.remove('grid')
+        videoContainer.innerHTML =`
+        <div class='min-h-[500px] flex flex-col gap-5 justify-center items-center'>
+        <img src='icon.png'>
+        <h2 class='text-2xl font-bold'>Content here in this catagery</h2>
+        </div>
+        `;
+        return
+    }
+    else{
+        videoContainer.classList.add('grid')
+    }
+
     vidoes.forEach(video => {
         const card = document.createElement('div')
         card.classList = 'card card-compact shadow-sm bg-red-200'
