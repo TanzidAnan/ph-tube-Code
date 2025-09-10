@@ -130,7 +130,7 @@ const loadDetails = async(videoId) =>{
     const res =await fetch(url)
     const data =await res.json();
     console.log(data)
-    displayDetails(data.video)
+    displayDetails(data.video);
 }
 
 
@@ -189,11 +189,12 @@ const displayVideos = (vidoes) => {
     ${video.authors[0].verified === true ? `<img class='w-5 h-5 object-cover' src="https://img.icons8.com/?size=80&id=41816&format=png"> ` : ''}
     
     </div>
-    <button onclick="loadDetails('${video.video_id}')" class='btn btn-sm border-t-cyan-300'>add</button>
+    <button onclick="loadDetails('${video.video_id}')" class='btn btn-sm border-t-cyan-300'>Show Details</button>
     </div>
   </div>
         `;
         videoContainer.append(card)
+        
     })
 }
 
@@ -206,6 +207,7 @@ loadVideos(e.target.value)
 
 loadCategoride()
 loadVideos()
+
 
 
 
